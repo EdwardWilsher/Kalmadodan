@@ -12,14 +12,13 @@ public class MainActivity extends AppCompatActivity {
 
     final TestActivity testClass = new TestActivity();
     private Button Test;
-    private Button testHomeButton;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Test = (Button)findViewById(R.id.button4);
+        Test = (Button)findViewById(R.id.testHomeButton);
         Test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
