@@ -6,43 +6,31 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity {
 
     final TestActivity testClass = new TestActivity();
+    private Button Test;
+    private Button testHomeButton;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button calm = new Button(this);
-        calm.setOnClickListener(new View.OnClickListener() {
+        Test = (Button)findViewById(R.id.button4);
+        Test.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
-                testClass.onCreate(savedInstanceState);
+                test();
             }
         });
+    }
 
-        Button test = new Button (this);
-        calm.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                testClass.onCreate(savedInstanceState);
-            }
-        });
-
-        Button profile = new Button (this);
-        calm.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                testClass.onCreate(savedInstanceState);
-            }
-        });
-
-        Button settings =  new Button (this);
-        calm.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                testClass.onCreate(savedInstanceState);
-            }
-        });
+    public void test(){
+        Intent intent = new Intent(this,TestActivity.class);
+        startActivity(intent);
     }
 
 }
