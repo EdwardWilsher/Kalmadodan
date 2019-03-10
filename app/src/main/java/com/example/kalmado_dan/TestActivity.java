@@ -62,8 +62,7 @@ public class TestActivity extends AppCompatActivity {  //change
     }
 
     public void testHome(){
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
+        finish();
     }
 
     public void testSubmitData(){

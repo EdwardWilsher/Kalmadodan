@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
     final TestActivity testClass = new TestActivity();
     private Button Test;
+    private Button Calm;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -25,10 +26,23 @@ public class MainActivity extends AppCompatActivity {
                 test();
             }
         });
+
+        Calm = (Button)findViewById(R.id.relax);
+        Calm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calm();
+            }
+        });
     }
 
     public void test(){
         Intent intent = new Intent(this,TestActivity.class);
+        startActivity(intent);
+    }
+
+    public void calm(){
+        Intent intent = new Intent(this,RelaxActivity.class);
         startActivity(intent);
     }
 
