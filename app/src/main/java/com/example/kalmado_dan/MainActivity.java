@@ -13,6 +13,8 @@ public class MainActivity extends AppCompatActivity {
     final TestActivity testClass = new TestActivity();
     private Button Test;
     private Button Calm;
+    private Button Settings;
+    private Button Data;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -34,6 +36,22 @@ public class MainActivity extends AppCompatActivity {
                 calm();
             }
         });
+
+        Settings = (Button)findViewById(R.id.Setting);
+        Settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                set();
+            }
+        });
+
+        Data = (Button)findViewById(R.id.data);
+        Settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dat();
+            }
+        });
     }
 
     public void test(){
@@ -44,6 +62,16 @@ public class MainActivity extends AppCompatActivity {
     public void calm(){
         Intent intent = new Intent(this,RelaxActivity.class);
         startActivity(intent);
+    }
+
+    public void set(){
+        //Intent intent = new Intent(this,SettingsActivity.class);
+        //startActivity(intent);
+    }
+
+    public void dat(){
+        //Intent intent = new Intent(this,DataActivity.class);
+        //startActivity(intent);
     }
 
 }
