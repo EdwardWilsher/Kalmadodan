@@ -129,6 +129,7 @@
         android:layout_below="@+id/seekBar1"
         android:layout_marginTop="0dp"
         android:layout_marginLeft="130dp"
+        android:text="3"
         android:textSize="17dp"/>
 
     <SeekBar
@@ -150,6 +151,7 @@
         android:layout_below="@+id/seekBar2"
         android:layout_marginTop="0dp"
         android:layout_marginLeft="130dp"
+        android:text="3"
         android:textSize="17dp"/>
 
     <SeekBar
@@ -171,6 +173,7 @@
         android:layout_below="@+id/seekBar3"
         android:layout_marginTop="0dp"
         android:layout_marginLeft="130dp"
+        android:text="3"
         android:textSize="17dp"/>
 
     <SeekBar
@@ -192,6 +195,7 @@
         android:layout_below="@+id/seekBar4"
         android:layout_marginTop="0dp"
         android:layout_marginLeft="130dp"
+        android:text="3"
         android:textSize="17dp"/>
 
 

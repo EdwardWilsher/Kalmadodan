@@ -22,6 +22,7 @@ public class TestActivity extends AppCompatActivity {  //change
     private TextView tView2;
     private TextView tView3;
     private TextView tView4;
+    private int[] vals={3,3,3,3};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +53,7 @@ public class TestActivity extends AppCompatActivity {  //change
             int val;
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                val = progress;
+                vals[0] = progress;
                 val = (progress * (seekBar.getWidth() - 2 * seekBar.getThumbOffset())) / seekBar.getMax();
                 tView1.setText("" + progress);
                 tView1.setX(seekBar.getX() + val + seekBar.getThumbOffset() / 2);
@@ -75,7 +76,7 @@ public class TestActivity extends AppCompatActivity {  //change
             int val;
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                val = progress;
+                vals[1] = progress;
                 val = (progress * (seekBar.getWidth() - 2 * seekBar.getThumbOffset())) / seekBar.getMax();
                 tView2.setText("" + progress);
                 tView2.setX(seekBar.getX() + val + seekBar.getThumbOffset() / 2);
@@ -98,7 +99,7 @@ public class TestActivity extends AppCompatActivity {  //change
             int val;
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                val = progress;
+                vals[2] = progress;
                 val = (progress * (seekBar.getWidth() - 2 * seekBar.getThumbOffset())) / seekBar.getMax();
                 tView3.setText("" + progress);
                 tView3.setX(seekBar.getX() + val + seekBar.getThumbOffset() / 2);
@@ -121,7 +122,7 @@ public class TestActivity extends AppCompatActivity {  //change
             int val;
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                val = progress;
+                vals[3] = progress;
                 val = (progress * (seekBar.getWidth() - 2 * seekBar.getThumbOffset())) / seekBar.getMax();
                 tView4.setText("" + progress);
                 tView4.setX(seekBar.getX() + val + seekBar.getThumbOffset() / 2);
@@ -145,6 +146,15 @@ public class TestActivity extends AppCompatActivity {  //change
     }
 
     public void testSubmitData(){
-        //TODO
+        int total = 0;
+
+        for (int i = 0; i<4;i++){
+            total = total+ vals[i];
+        }
+
+        //transmit total
+        //Intent intent = new Intent(this,<<the data class>>.class);
+        //startActivity(intent);
+
     }
 }
