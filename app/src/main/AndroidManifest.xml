@@ -17,6 +17,7 @@
         <activity android:name=".Breathe" />
         <activity android:name=".Music" />
         <activity android:name=".Meditate" />
+        <activity android:name=".SettingsActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
