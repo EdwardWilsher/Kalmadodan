@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:defaultValue="true"
+        android:key="notifications_new_message"
+        android:title="Receive notifications" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:dependency="notifications_new_message"
+        android:key="notifications_secret"
+        android:title="Make notifications secret" />
+    <SwitchPreference
+        android:defaultValue="true"
+        android:dependency="notifications_new_message"
+        android:key="notifications_new_message_vibrate"
+        android:title="@string/pref_title_vibrate" />
+    <ListPreference
+        android:defaultValue="360"
+        android:dependency="notifications_new_message"
+        android:entries="@array/pref_sync_frequency_titles"
+        android:entryValues="@array/pref_sync_frequency_values"
+        android:key="notifications_new_message_sync_frequency"
+        android:title="Frequency" />
+
+</PreferenceScreen>
