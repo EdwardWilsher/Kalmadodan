@@ -1,3 +1,4 @@
+package com.example.kalmado_dan;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
