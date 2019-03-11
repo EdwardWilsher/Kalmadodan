@@ -56,7 +56,7 @@ public class TestActivity extends AppCompatActivity {  //change
                 val = (progress * (seekBar.getWidth() - 2 * seekBar.getThumbOffset())) / seekBar.getMax();
                 tView1.setText("" + progress);
                 tView1.setX(seekBar.getX() + val + seekBar.getThumbOffset() / 2);
-                tView1.setY(seekBar.getY()+70);
+                tView1.setY(seekBar.getY()+50);
             }
 
             @Override
@@ -66,7 +66,7 @@ public class TestActivity extends AppCompatActivity {  //change
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                tView1.setY(seekBar.getY()+40);
+                tView1.setY(seekBar.getY()+30);
             }
         });
 
