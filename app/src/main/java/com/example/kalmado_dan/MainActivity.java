@@ -65,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void set(){
-        //Intent intent = new Intent(this,SettingsActivity.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this,SettingsActivity.class);
+        startActivity(intent);
     }
 
     public void dat(){
