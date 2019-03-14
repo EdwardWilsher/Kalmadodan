@@ -27,8 +27,8 @@ public class RelaxActivity extends AppCompatActivity {
         Button meditateButton = findViewById(R.id.MeditateButton);
         meditateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //Intent i2 = new Intent(RelaxActivity.this, Meditate.class);
-                //startActivity(i2);
+                Intent i = new Intent(RelaxActivity.this, MeditateActivity.class);
+                startActivity(i);
             }
         });
 
