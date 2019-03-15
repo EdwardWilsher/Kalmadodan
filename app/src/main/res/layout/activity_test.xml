@@ -35,10 +35,10 @@
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="338dp"
-        android:layout_height="340dp"
+        android:layout_height="360dp"
         android:layout_below="@+id/TitleText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:contentDescription="Graph"
         app:srcCompat="@android:drawable/screen_background_light_transparent" />
 
@@ -64,7 +64,7 @@
         android:visibility="visible"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginTop="30dp"/>
 
     <TextView
         android:id="@+id/Question1"
@@ -72,7 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/TitleText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:text="Question on anxiety"
         android:textSize="18sp"
         android:visibility="visible" />
@@ -197,6 +197,18 @@
         android:layout_marginLeft="130dp"
         android:text="3"
         android:textSize="17dp"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="109dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/seekBar4"
+        android:layout_alignStart="@+id/imageView2"
+        android:layout_alignLeft="@+id/imageView2"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="25dp"
+        android:text="Manualy enter date?" />
 
 
 </RelativeLayout>

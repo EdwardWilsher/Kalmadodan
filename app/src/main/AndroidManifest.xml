@@ -14,9 +14,7 @@
             android:label="@string/title_activity_relax"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".TestActivity" />
-        <activity android:name=".Breathe" />
-        <activity android:name=".Music" />
-        <activity android:name=".Meditate" />
+        <activity android:name=".MeditateActivity" />
         <activity android:name=".SettingsActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
