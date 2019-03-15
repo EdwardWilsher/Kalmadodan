@@ -1,13 +1,19 @@
 // I used relative as the main tag in the XML as it seems to be simpler and still widely used.
 package com.example.kalmado_dan; // change to fit the main project
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import java.util.Calendar;
 
 
 public class TestActivity extends AppCompatActivity {  //change
@@ -22,7 +28,10 @@ public class TestActivity extends AppCompatActivity {  //change
     private TextView tView2;
     private TextView tView3;
     private TextView tView4;
+    private TextView Dset;
+    private DatePickerDialog.OnDateSetListener DateSet;
     private int[] vals={3,3,3,3};
+    private int[] date = {0,0,0};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +42,36 @@ public class TestActivity extends AppCompatActivity {  //change
         tView2 = (TextView) findViewById(R.id.textview2);
         tView3 = (TextView) findViewById(R.id.textview3);
         tView4 = (TextView) findViewById(R.id.textview4);
+        Dset = (TextView) findViewById(R.id.textView);
+
+        Calendar cal = Calendar.getInstance();
+        date[0]  = cal.get(Calendar.YEAR);
+        date[1] = 1 + cal.get(Calendar.MONTH);
+        date[2]  = cal.get(Calendar.DAY_OF_MONTH);
+
+
+        Dset.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar cal = Calendar.getInstance();
+                int year  = cal.get(Calendar.YEAR);
+                int month  = cal.get(Calendar.MONTH);
+                int day  = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(TestActivity.this,android.R.style.Theme_Holo_Light_Dialog_MinWidth,DateSet,year,month,day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+            }
+        }));
+
+        DateSet = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                date[0]  = year;
+                date[1] = 1 + month;
+                date[2]  = dayOfMonth;
+            }
+        };
 
         testSubmitButton = (Button)findViewById(R.id.SubmitButton);
         testSubmitButton.setOnClickListener(new View.OnClickListener() { // creating an onclick event for the buttons. The function is defined below
@@ -153,8 +192,11 @@ public class TestActivity extends AppCompatActivity {  //change
         }
 
         //transmit total
+        //transmit date
         //Intent intent = new Intent(this,<<the data class>>.class);
         //startActivity(intent);
+
+        finish();
 
     }
 }
