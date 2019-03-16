@@ -26,7 +26,7 @@ public class DataActivity extends AppCompatActivity {
     private String str;
     private int[] st = {0,1,2,3};
     private int[] ss = {0,1};
-    private int[] Y = new int[31];
+    private int[] Y = new int[32];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +57,10 @@ public class DataActivity extends AppCompatActivity {
 
         //data.deleteData(arrli);
         GraphView graph = (GraphView) findViewById(R.id.graph);
+        graph.getViewport().setScrollable(true);
+        graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setMinX(0);
+        graph.getViewport().setMaxX(31);
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
 
         });
@@ -95,7 +99,7 @@ public class DataActivity extends AppCompatActivity {
 
         int recent = 0;
         for (int i = 0; i< 31;i++){
-            if (Y != null)   {
+            if (Y[i] != 0)   {
                 series.appendData(new DataPoint(i,Y[i]), true,31);
                 recent = i;
             } else {
@@ -103,6 +107,10 @@ public class DataActivity extends AppCompatActivity {
             }
 
         }
+
+
+        graph.getViewport().setMinX(0);
+        graph.getViewport().setMaxX(31);
 
     }
 }
