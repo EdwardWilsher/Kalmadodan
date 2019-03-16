@@ -208,7 +208,22 @@
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="25dp"
-        android:text="Manualy enter date?" />
+        android:clickable="true"
+        android:text="Manualy enter date?"/>
+
+    <TextView
+        android:id="@+id/textViewdec"
+        android:layout_width="109dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/seekBar4"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:clickable="true"
+        android:text="Add a description" />
+
 
 
 </RelativeLayout>

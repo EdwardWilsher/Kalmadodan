@@ -2,14 +2,19 @@
 package com.example.kalmado_dan; // change to fit the main project
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -29,9 +34,11 @@ public class TestActivity extends AppCompatActivity {  //change
     private TextView tView3;
     private TextView tView4;
     private TextView Dset;
+    private TextView DescSet;
     private DatePickerDialog.OnDateSetListener DateSet;
     private int[] vals={3,3,3,3};
     private int[] date = {0,0,0};
+    private String Description;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +50,41 @@ public class TestActivity extends AppCompatActivity {  //change
         tView3 = (TextView) findViewById(R.id.textview3);
         tView4 = (TextView) findViewById(R.id.textview4);
         Dset = (TextView) findViewById(R.id.textView);
+        DescSet = (TextView) findViewById(R.id.textViewdec);
 
         Calendar cal = Calendar.getInstance();
         date[0]  = cal.get(Calendar.YEAR);
         date[1] = 1 + cal.get(Calendar.MONTH);
         date[2]  = cal.get(Calendar.DAY_OF_MONTH);
 
+
+        DescSet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(TestActivity.this);
+                builder.setTitle("Title");
+
+                final EditText input = new EditText(TestActivity.this);
+                input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_CLASS_TEXT);
+                input.setFilters(new InputFilter[] {new InputFilter.LengthFilter(42)});
+                builder.setView(input);
+
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Description = input.getText().toString();
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                builder.show();
+            }
+        });
 
         Dset.setOnClickListener((new View.OnClickListener() {
             @Override
@@ -191,6 +227,7 @@ public class TestActivity extends AppCompatActivity {  //change
             total = total+ vals[i];
         }
 
+        //transmit description
         //transmit total
         //transmit date
         //Intent intent = new Intent(this,<<the data class>>.class);
