@@ -1,9 +1,12 @@
 package com.example.kalmado_dan;
 
 import android.graphics.Color;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -46,7 +49,14 @@ public class TableDataActivity extends AppCompatActivity {
             tbrow.addView(t3v);
             TextView t4v = new TextView(this);
             t4v.setText("Delete");
+            t4v.setTextColor(0xFF0000DD);
             t4v.setGravity(Gravity.CENTER);
+            t4v.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //TODO
+                }
+            });
             tbrow.addView(t4v);
             stk.addView(tbrow);
         }
