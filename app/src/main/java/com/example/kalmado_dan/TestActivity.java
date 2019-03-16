@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 
@@ -39,6 +40,7 @@ public class TestActivity extends AppCompatActivity {  //change
     private int[] vals={3,3,3,3};
     private int[] date = {0,0,0};
     private String Description;
+    private Data data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -227,6 +229,15 @@ public class TestActivity extends AppCompatActivity {  //change
             total = total+ vals[i];
         }
 
+        Data data = new Data(this);
+
+        ArrayList<String> arrli = new ArrayList<String>();
+
+        arrli.add(Integer.toString(total));
+        arrli.add(date[2]+"/"+date[1]+"/"+date[0]);
+        arrli.add(Description);
+
+        data.addData(arrli);
         //transmit description
         //transmit total
         //transmit date

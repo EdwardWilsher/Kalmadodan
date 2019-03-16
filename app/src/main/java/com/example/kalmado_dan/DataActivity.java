@@ -10,10 +10,13 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.util.ArrayList;
+
 public class DataActivity extends AppCompatActivity {
 
     private Button Home;
     private Button Data;
+    private Data data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,11 @@ public class DataActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Data data = new Data(this);
+
+        ArrayList<String> arrli = new ArrayList<String>();
+        arrli = data.getData();
 
         GraphView graph = (GraphView) findViewById(R.id.graph);
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {

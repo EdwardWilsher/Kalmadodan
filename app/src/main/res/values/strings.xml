@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Kalmado</string>
     <string name="kalmado">Kalmado</string>
-    <string name="button">button</string>
+    <string name="button">How are you</string>
     <string name="title_activity_relax">RelaxActivity</string>
 
 

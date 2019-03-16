@@ -11,12 +11,23 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class TableDataActivity extends AppCompatActivity {
+
+    private Data data;
+    private String str;
+    private int[] st = {0,1,2,3};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table_data);
+
+        Data data = new Data(this);
+
+        ArrayList<String> arrli = new ArrayList<String>();
+        arrli = data.getData();
 
         TableLayout stk = (TableLayout) findViewById(R.id.table_main);
         TableRow tbrow0 = new TableRow(this);
@@ -33,18 +44,27 @@ public class TableDataActivity extends AppCompatActivity {
         tv3.setText("  ");
         tbrow0.addView(tv3);
         stk.addView(tbrow0);
-        for (int i = 0; i < 25; i++) {
+        for (int i = 0; i < arrli.size(); i++) {
+            str = arrli.get(i);
+            int k = 1;
+            for(int j = 0; j < str.length(); j++){
+                char temp = str.charAt(j);
+                if (temp == '|'){
+                    st[k] = j;
+                    k++;
+                }
+            }
             TableRow tbrow = new TableRow(this);
             TextView t1v = new TextView(this);
-            t1v.setText("" + i);
+            t1v.setText(str.substring(st[0],st[1]));
             t1v.setGravity(Gravity.CENTER);
             tbrow.addView(t1v);
             TextView t2v = new TextView(this);
-            t2v.setText(i + "/12/12");
+            t2v.setText(str.substring(st[1]+1,st[2]));
             t2v.setGravity(Gravity.CENTER);
             tbrow.addView(t2v);
             TextView t3v = new TextView(this);
-            t3v.setText("hard 42 character limit------------------|");
+            t3v.setText(str.substring(st[2]+1,str.length()));
             t3v.setGravity(Gravity.CENTER);
             tbrow.addView(t3v);
             TextView t4v = new TextView(this);
