@@ -70,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void dat(){
-        //Intent intent = new Intent(this,DataActivity.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this,DataActivity.class);
+        startActivity(intent);
     }
 
 }
