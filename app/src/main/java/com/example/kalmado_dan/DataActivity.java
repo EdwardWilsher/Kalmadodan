@@ -6,7 +6,9 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
@@ -22,11 +24,19 @@ public class DataActivity extends AppCompatActivity {
     private Button Home;
     private Button Data;
     private Data data;
+    private Spinner M;
+
+    private Spinner Ye;
     private int[] date = {0,0,0};
     private String str;
     private int[] st = {0,1,2,3};
     private int[] ss = {0,1};
     private int[] Y = new int[32];
+    private final int Severity = 0;
+    private final int Day = 0;
+    private final int Month = 0;
+    private final int Year = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +60,75 @@ public class DataActivity extends AppCompatActivity {
             }
         });
 
+        M = (Spinner)findViewById(R.id.spinner3);
+        Ye = (Spinner)findViewById(R.id.spinner4);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.Months, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        M.setAdapter(adapter);
+
+        Data data = new Data(this);
+
+        ArrayList<String> arrli = new ArrayList<String>();
+        arrli = data.getData();
+
+        String[][] vals = new String[arrli.size()][4];
+
+        for (int i = 0; i < arrli.size(); i++) {
+            str = arrli.get(i);
+            int k = 1;
+            int l = 0;
+            for (int j = 0; j < str.length(); j++) {
+                char temp = str.charAt(j);
+                if (temp == '|') {
+                    st[k] = j;
+                    k++;
+                }
+                if (temp == '/') {
+                    ss[l] = j;
+                    l++;
+                }
+            }
+            vals[i][Severity] = str.substring(0, st[1]);
+            vals[i][Day] = str.substring(st[1]+1, ss[0]);
+            vals[i][Month] = str.substring(ss[0]+1, ss[1]);
+            vals[i][Year] = str.substring(ss[1]+1, st[2]);
+        }
+
+        Calendar cal = Calendar.getInstance();
+        date[0]  = cal.get(Calendar.YEAR);
+        date[1] = 1 + cal.get(Calendar.MONTH);
+        date[2]  = cal.get(Calendar.DAY_OF_MONTH);
+
+        ArrayList<String> years = new ArrayList<String>();
+        years.add(Integer.toString(date[0]));
+
+        for (int i = 0; i < date.length; i++){
+            if(!years.contains(vals[i][Year])){
+                years.add(vals[i][Year]);
+            }
+        }
+
+        ArrayAdapter<String> YA = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, years);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Ye.setAdapter(YA);
+
+
+
+        M.setSelection(date[1]);
+        Ye.setSelection(0);
+
+
+        boolean DM = true;
+
+        if (DM) {
+            month();
+        }
+
+    }
+
+    private void month(){
         Data data = new Data(this);
 
         ArrayList<String> arrli = new ArrayList<String>();
@@ -59,8 +138,6 @@ public class DataActivity extends AppCompatActivity {
         GraphView graph = (GraphView) findViewById(R.id.graph);
         graph.getViewport().setScrollable(true);
         graph.getViewport().setXAxisBoundsManual(true);
-        graph.getViewport().setMinX(0);
-        graph.getViewport().setMaxX(31);
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
 
         });
@@ -111,6 +188,5 @@ public class DataActivity extends AppCompatActivity {
 
         graph.getViewport().setMinX(0);
         graph.getViewport().setMaxX(31);
-
     }
 }
