@@ -179,6 +179,7 @@ public class DataActivity extends AppCompatActivity {
         GraphView graph = (GraphView) findViewById(R.id.graph);
         graph.getViewport().setScrollable(true);
         graph.getViewport().setXAxisBoundsManual(true);
+        graph.removeAllSeries();
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
 
         });
@@ -208,7 +209,8 @@ public class DataActivity extends AppCompatActivity {
                 }
             }
             String Tmp = str.substring(ss[0]+1,ss[1]);
-            if (Integer.parseInt(Tmp) == date[1]){
+            String TmpY = str.substring(ss[1]+1, st[2]);
+            if ((Integer.parseInt(Tmp) == month)&&(Integer.parseInt(TmpY)== year)){
                 Y[Integer.parseInt(str.substring(st[1]+1,ss[0]))] = Integer.parseInt(str.substring(st[0],st[1]));
             }
 
