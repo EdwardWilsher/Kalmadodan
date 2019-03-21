@@ -53,7 +53,7 @@ public class MeditateActivity extends AppCompatActivity implements AdapterView.O
         musicList.setAdapter(songs);
         musicList.setOnItemSelectedListener(this);
 
-        Button homeButton = findViewById(R.id.button2);
+        Button homeButton = findViewById(R.id.SettingsButton);
         homeButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (musicPlay.isPlaying()) {
@@ -66,7 +66,7 @@ public class MeditateActivity extends AppCompatActivity implements AdapterView.O
             }
         });
 
-        Button relax = findViewById(R.id.button11);
+        Button relax = findViewById(R.id.SettingsButton);
         relax.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (musicPlay.isPlaying()) {
@@ -78,7 +78,7 @@ public class MeditateActivity extends AppCompatActivity implements AdapterView.O
             }
         });
 
-        Button exit = findViewById(R.id.button7);
+        Button exit = findViewById(R.id.BackButton);
         exit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 stopped = true;
@@ -139,7 +139,7 @@ public class MeditateActivity extends AppCompatActivity implements AdapterView.O
             }
         });
 
-        ImageView play = findViewById(R.id.imageView3);
+        ImageView play = findViewById(R.id.playButton);
         play.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             public void onClick(View v) {
@@ -170,7 +170,7 @@ public class MeditateActivity extends AppCompatActivity implements AdapterView.O
             }
         });
 
-        ImageView pause = findViewById(R.id.imageView4);
+        ImageView pause = findViewById(R.id.pauseButton);
         pause.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (musicPlay.isPlaying()) {
