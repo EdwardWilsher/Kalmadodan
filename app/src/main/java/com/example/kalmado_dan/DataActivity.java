@@ -6,6 +6,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -25,7 +26,7 @@ public class DataActivity extends AppCompatActivity {
     private Button Data;
     private Data data;
     private Spinner M;
-
+    public boolean DM;
     private Spinner Ye;
     private int[] date = {0,0,0};
     private String str;
@@ -120,15 +121,55 @@ public class DataActivity extends AppCompatActivity {
         Ye.setSelection(0);
 
 
-        boolean DM = true;
+        DM = true;
 
         if (DM) {
             month();
         }
 
+        M.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                refresh();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        Ye.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                refresh();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
     }
 
-    private void month(){
+    private void refresh(){
+        DM = false;
+        if(M.getSelectedItemPosition() == 0){
+            DM = true;
+        }
+        if(DM){
+            month(M.getSelectedItemPosition(),Ye.getSelectedItemPosition());
+        }else{
+            year(Ye.getSelectedItemPosition());
+        }
+    }
+
+    private void year(int selectedItemPosition) {
+        //todo
+    }
+
+    private void month(int month, int year){
         Data data = new Data(this);
 
         ArrayList<String> arrli = new ArrayList<String>();
