@@ -124,7 +124,7 @@ public class DataActivity extends AppCompatActivity {
         DM = true;
 
         if (DM) {
-            month();
+            month(date[1],date[0]);
         }
 
         M.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
