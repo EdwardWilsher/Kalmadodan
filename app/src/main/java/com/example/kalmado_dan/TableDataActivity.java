@@ -1,5 +1,6 @@
 package com.example.kalmado_dan;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +19,7 @@ public class TableDataActivity extends AppCompatActivity {
     private Data data;
     private String str;
     private int[] st = {0,1,2,3};
+    public ArrayList<TextView> TVD = new ArrayList<TextView>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,19 +69,35 @@ public class TableDataActivity extends AppCompatActivity {
             t3v.setText(str.substring(st[2]+1,str.length()));
             t3v.setGravity(Gravity.CENTER);
             tbrow.addView(t3v);
-            TextView t4v = new TextView(this);
-            t4v.setText("Delete");
-            t4v.setTextColor(0xFF0000DD);
-            t4v.setGravity(Gravity.CENTER);
-            t4v.setOnClickListener(new View.OnClickListener() {
+            TVD.add(new TextView(this));
+            TVD.get(i).setText("Delete");
+            TVD.get(i).setTextColor(0xFF0000DD);
+            TVD.get(i).setGravity(Gravity.CENTER);
+            final int finalI = i;
+            TVD.get(i).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //TODO
+                    Del(finalI);
                 }
             });
-            tbrow.addView(t4v);
+            tbrow.addView(TVD.get(i));
             stk.addView(tbrow);
         }
 
+    }
+
+    public void Del(int i){
+        Data data = new Data(this);
+
+        ArrayList<String> arrli = new ArrayList<String>();
+        arrli = data.getData();
+        ArrayList<String> temp = new ArrayList<String>();
+        String temp2 = arrli.get(i);
+        temp.add(temp2);
+        data.deleteData(temp);
+
+        Intent refresh = new Intent(this, TableDataActivity.class);
+        startActivity(refresh);//Start the same Activity
+        finish(); //finish Activity.
     }
 }
