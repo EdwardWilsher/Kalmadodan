@@ -32,7 +32,6 @@ public class DataActivity extends AppCompatActivity {
     private String str;
     private int[] st = {0,1,2,3};
     private int[] ss = {0,1};
-    private int[] Y = new int[32];
     private final int Severity = 0;
     private final int Day = 0;
     private final int Month = 0;
@@ -154,22 +153,27 @@ public class DataActivity extends AppCompatActivity {
     }
 
     private void refresh(){
+
         DM = false;
         if(M.getSelectedItemPosition() == 0){
             DM = true;
         }
-        if(DM){
-            month(M.getSelectedItemPosition(),Ye.getSelectedItemPosition());
-        }else{
-            year(Ye.getSelectedItemPosition());
-        }
+        //if(DM){
+            month(M.getSelectedItemPosition(), Integer.parseInt(String.valueOf(Ye.getSelectedItem())));
+        //}else{
+            //year(Ye.getSelectedItemPosition());
+        //}
     }
 
     private void year(int selectedItemPosition) {
-        //todo
+        //GraphView graph = (GraphView) findViewById(R.id.graph);
+        //graph.getViewport().setScrollable(true);
+        //graph.getViewport().setXAxisBoundsManual(true);
+        //graph.removeAllSeries();
     }
 
     private void month(int month, int year){
+        int[] Y = new int[32];
         Data data = new Data(this);
 
         ArrayList<String> arrli = new ArrayList<String>();
@@ -185,11 +189,6 @@ public class DataActivity extends AppCompatActivity {
         });
         graph.addSeries(series);
 
-
-        Calendar cal = Calendar.getInstance();
-        date[0]  = cal.get(Calendar.YEAR);
-        date[1] = 1 + cal.get(Calendar.MONTH);
-        date[2]  = cal.get(Calendar.DAY_OF_MONTH);
 
         Y[0] = 0;
 
