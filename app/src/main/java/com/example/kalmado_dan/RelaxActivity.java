@@ -35,8 +35,8 @@ public class RelaxActivity extends AppCompatActivity {
         Button breatheButton = findViewById(R.id.RelaxButton);
         breatheButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //Intent j2 = new Intent(Calm.this, Breathe.class);
-                //startActivity(j2);
+                Intent i = new Intent(RelaxActivity.this, BreatheActivity.class);
+                startActivity(i);
             }
         });
 

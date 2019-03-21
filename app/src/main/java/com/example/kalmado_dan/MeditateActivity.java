@@ -1,5 +1,10 @@
 package com.example.kalmado_dan;
 
+//commented out sections don't work
+// seeker does nothing
+// buttons are un used
+// crash if volume set to max.
+
 import android.app.Activity;
 import android.content.Intent;
 import android.media.AudioManager;

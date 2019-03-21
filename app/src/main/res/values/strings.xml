@@ -63,4 +63,5 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="todo">temp</string>
+    <string name="title_activity_breathe">BreatheActivity</string>
 </resources>
